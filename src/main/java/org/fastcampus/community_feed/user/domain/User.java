@@ -2,19 +2,21 @@ package org.fastcampus.community_feed.user.domain;
 
 import java.util.Objects;
 
+import org.fastcampus.community_feed.common.domain.PositiveIntegerCounter;
+
 public class User {
 
 	private final Long id;
 	private final UserInfo info;
-	private final UserRelationCounter followingcount;
-	private final UserRelationCounter followerCounter;
+	private final PositiveIntegerCounter followingcount;
+	private final PositiveIntegerCounter followerCounter;
 
 
 	public User(Long id, UserInfo info) {
 		this.id = id;
 		this.info = info;
-		this.followingcount = new UserRelationCounter();
-		this.followerCounter = new UserRelationCounter();
+		this.followingcount = new PositiveIntegerCounter();
+		this.followerCounter = new PositiveIntegerCounter();
 	}
 
 	// 팔로우 기능
@@ -60,5 +62,9 @@ public class User {
 	@Override
 	public int hashCode() {
 		return Objects.hashCode(id);
+	}
+
+	public Long getId() {
+		return id;
 	}
 }
